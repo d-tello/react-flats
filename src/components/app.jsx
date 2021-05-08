@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 
+// Data
+import flats from "../../data/flats";
 
 import FlatList from "./flat_list";
-import flats from "../../data/flats";
 import Marker from "./marker";
 
 class App extends Component {
