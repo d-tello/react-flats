@@ -21,6 +21,10 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "file-loader",
+      },
+      {
         test: /\.s?css$/,
         exclude: /node_modules/,
         loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]

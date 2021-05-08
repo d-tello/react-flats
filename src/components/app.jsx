@@ -22,20 +22,25 @@ class App extends Component {
     this.setState({
       lat,
       lng,
-      center: { lat, lng }
+      center: { lat, lng },
     });
   };
 
   render() {
+    const GoogleMapsApiKey = "AIzaSyAvqSM6CqieMf-IfaLeU6PrlSpuz_FKFsw";
     return (
       <div>
         <FlatList flats={this.state.flats} selectFlat={this.selectFlat} />
         <div className="map-container">
-          <GoogleMapReact center={this.state.center} defaultZoom={12}>
-            <Marker
-              lat={this.state.lat}
-              lng={this.state.lng}
-            />
+          <GoogleMapReact
+            bootstrapURLKeys={{
+              key: GoogleMapsApiKey,
+              language: "en",
+            }}
+            center={this.state.center}
+            defaultZoom={12}
+          >
+            <Marker lat={this.state.lat} lng={this.state.lng} />
           </GoogleMapReact>
         </div>
       </div>
