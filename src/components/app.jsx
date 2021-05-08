@@ -25,12 +25,21 @@ class App extends Component {
     });
   };
 
+  selectedFlat = (flat) => {
+    const { lat, lng } = this.state;
+    return (flat.lat === lat && flat.lng === lng);
+  }
+
   render() {
     const GoogleMapsApiKey = "AIzaSyAvqSM6CqieMf-IfaLeU6PrlSpuz_FKFsw";
     const { lat, lng, center } = this.state;
     return (
       <div>
-        <FlatList flats={flats} selectFlat={this.selectFlat} />
+        <FlatList
+          flats={flats}
+          selectFlat={this.selectFlat}
+          selectedFlat={this.selectedFlat}
+        />
         <div className="map-container">
           <GoogleMapReact
             bootstrapURLKeys={{
