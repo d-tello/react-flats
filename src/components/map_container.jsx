@@ -4,20 +4,23 @@ import GoogleMapReact from "google-map-react";
 import Marker from "./marker";
 
 class MapContainer extends Component {
-  static defaultProps = {
-    center: { lat: 59.95, lng: 30.33 },
-    zoom: 11,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      zoom: 11,
+      center: { lat: 30.1, lng: 30.1 }
+    };
+  }
 
   render() {
     return (
       <div className="map-container">
         <GoogleMapReact
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          defaultCenter={this.state.center}
+          defaultZoom={this.state.zoom}
           yesIWantToUseGoogleMapApiInternals
         >
-          <Marker lat={59.955413} lng={30.337844} text="My Marker" />
+          <Marker lat={this.props.lat} lng={this.props.lng} text="My Marker" />
         </GoogleMapReact>
       </div>
     );

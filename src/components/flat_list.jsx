@@ -1,16 +1,19 @@
 import React from "react";
 import Flat from "./flat";
 
-const FlatList = ({ flats }) => {
+const FlatList = ({ flats, selectFlat }) => {
   return (
     <div className="flat-list">
-      {flats.map((flat) => (
+      {flats.map(flat => (
         <Flat
-          id={flat.name}
+          key={flat.name}
           name={flat.name}
           price={flat.price}
           priceCurrency={flat.priceCurrency}
           imageUrl={flat.imageUrl}
+          selectFlat={selectFlat}
+          lat={flat.lat}
+          lng={flat.lng}
         />
       ))}
     </div>

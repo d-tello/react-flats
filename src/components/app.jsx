@@ -7,14 +7,25 @@ import MapContainer from "./map_container";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { flats };
+    this.state = {
+      flats,
+      lat: null,
+      lng: null,
+    };
   }
+
+  selectFlat = (lat, lng) => {
+    this.setState({
+      lat,
+      lng,
+    });
+  };
 
   render() {
     return (
       <div>
-        <FlatList flats={this.state.flats} />
-        <MapContainer />
+        <FlatList flats={this.state.flats} selectFlat={this.selectFlat} />
+        <MapContainer lat={this.state.lat} lng={this.state.lng} />
       </div>
     );
   }
