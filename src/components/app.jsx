@@ -11,7 +11,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      flats,
       lat: null,
       lng: null,
       center: { lat: flats[0].lat, lng: flats[0].lng },
@@ -28,19 +27,20 @@ class App extends Component {
 
   render() {
     const GoogleMapsApiKey = "AIzaSyAvqSM6CqieMf-IfaLeU6PrlSpuz_FKFsw";
+    const { lat, lng, center } = this.state;
     return (
       <div>
-        <FlatList flats={this.state.flats} selectFlat={this.selectFlat} />
+        <FlatList flats={flats} selectFlat={this.selectFlat} />
         <div className="map-container">
           <GoogleMapReact
             bootstrapURLKeys={{
               key: GoogleMapsApiKey,
               language: "en",
             }}
-            center={this.state.center}
+            center={center}
             defaultZoom={12}
           >
-            <Marker lat={this.state.lat} lng={this.state.lng} />
+            <Marker lat={lat} lng={lng} />
           </GoogleMapReact>
         </div>
       </div>
