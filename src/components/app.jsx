@@ -27,11 +27,11 @@ class App extends Component {
 
   selectedFlat = (flat) => {
     const { lat, lng } = this.state;
-    return (flat.lat === lat && flat.lng === lng);
-  }
+    return flat.lat === lat && flat.lng === lng;
+  };
 
   render() {
-    const GoogleMapsApiKey = "AIzaSyAvqSM6CqieMf-IfaLeU6PrlSpuz_FKFsw";
+    const GoogleMapsApiKey = process.env.GOOGLE_MAP_API_KEY;
     const { lat, lng, center } = this.state;
     return (
       <div>
